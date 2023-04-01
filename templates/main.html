@@ -11,112 +11,132 @@
     <title>Linkedin Bio Generator</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css”rel=”nofollow”
-        integrity=”sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm” crossorigin=”anonymous”>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
 </head>
 
 <body>
-    <form method="post">
-        <div class="form-group">
-            <label for="first_name">First name</label>
-            <input class="form-control" type="text" placeholder="First name" name="first_name" id="first_name">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <form method="post">
+                    <div class="form-group">
+                        <label for="first_name">First name</label>
+                        <input class="form-control" type="text" placeholder="First name" name="first_name"
+                            id="first_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="second_name">Second name</label>
+                        <input class="form-control" type="text" placeholder="Second name" name="last_name"
+                            id="last_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input class="form-control" type="text" placeholder="location" name="location" id="location">
+                    </div>
+                    <div class="form-group">
+                        <label for="years_of_experience">Years of experience</label>
+                        <select class="form-control" id="years_of_experience" name="years_of_experience">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="industry">Industry</label>
+                        <select class="form-control" id="industry" , name="industry">
+                            <option>Agriculture </option>
+                            <option>Automotive</option>
+                            <option>Banking and finance</option>
+                            <option>Biotechnology and pharmaceuticals</option>
+                            <option>Chemicals</option>
+                            <option>Construction</option>
+                            <option>Consumer goods</option>
+                            <option>Education</option>
+                            <option>Energy and utilities</option>
+                            <option>Healthcare</option>
+                            <option>Hospitality and tourism </option>
+                            <option>Information technology</option>
+                            <option>Manufacturing</option>
+                            <option>Media and entertainment</option>
+                            <option>Real estate</option>
+                            <option>Retail </option>
+                            <option>Telecommunications</option>
+                            <option>Transportation and logistics</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="degree_type">degree</label>
+                        <select class="form-control" id="degree_type" , name="degree_type">
+                            <option>Associate Degree</option>
+                            <option>Bachelor's Degree</option>
+                            <option>Master's Degree</option>
+                            <option>Doctoral Degree</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="field_of_study">degree</label>
+                        <select class="form-control" id="field_of_study" , name="field_of_study">
+                            <option>Agriculture</option>
+                            <option>Architecture</option>
+                            <option>Art and design</option>
+                            <option>Biology</option>
+                            <option>Business and management</option>
+                            <option>Chemistry</option>
+                            <option>Communications</option>
+                            <option>Computer science</option>
+                            <option>Criminal justice</option>
+                            <option>Education</option>
+                            <option>Engineering</option>
+                            <option>Environmental science</option>
+                            <option>Finance and accounting</option>
+                            <option>Health and medicine</option>
+                            <option>History</option>
+                            <option>Human resources</option>
+                            <option>Information technology</option>
+                            <option>International relations</option>
+                            <option>Journalism</option>
+                            <option>Law and legal studies</option>
+                            <option>Linguistics</option>
+                            <option>Marketing and advertising</option>
+                            <option>Mathematics</option>
+                            <option>Music</option>
+                            <option>Nursing</option>
+                            <option>Philosophy</option>
+                            <option>Physics</option>
+                            <option>Political science</option>
+                            <option>Psychology</option>
+                            <option>Social work</option>
+                            <option>Sociology</option>
+                            <option>Sports and physical education</option>
+                            <option>Theatre and drama</option>
+                            <option>Tourism and hospitality</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class='col-sm-6'>
+                <p class="text-center">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet
+                    fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res
+                    quas ex
+                    communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae
+                    in
+                    diem
+                    certam indicere. Cras mattis iudicium purus sit amet fermentum
+                </p>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="second_name">Second name</label>
-            <input class="form-control" type="text" placeholder="Second name" name="last_name" id="last_name">
-        </div>
-        <div class="form-group">
-            <label for="location">Location</label>
-            <input class="form-control" type="text" placeholder="location" name="location" id="location">
-        </div>
-        <div class="form-group">
-            <label for="years_of_experience">Years of experience</label>
-            <select class="form-control" id="years_of_experience" name="years_of_experience">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="industry">Industry</label>
-            <select class="form-control" id="industry" , name="industry">
-                <option>Agriculture </option>
-                <option>Automotive</option>
-                <option>Banking and finance</option>
-                <option>Biotechnology and pharmaceuticals</option>
-                <option>Chemicals</option>
-                <option>Construction</option>
-                <option>Consumer goods</option>
-                <option>Education</option>
-                <option>Energy and utilities</option>
-                <option>Healthcare</option>
-                <option>Hospitality and tourism </option>
-                <option>Information technology</option>
-                <option>Manufacturing</option>
-                <option>Media and entertainment</option>
-                <option>Real estate</option>
-                <option>Retail </option>
-                <option>Telecommunications</option>
-                <option>Transportation and logistics</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="degree_type">degree</label>
-            <select class="form-control" id="degree_type" , name="degree_type">
-                <option>Associate Degree</option>
-                <option>Bachelor's Degree</option>
-                <option>Master's Degree</option>
-                <option>Doctoral Degree</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="field_of_study">degree</label>
-            <select class="form-control" id="field_of_study" , name="field_of_study">
-                <option>Agriculture</option>
-                <option>Architecture</option>
-                <option>Art and design</option>
-                <option>Biology</option>
-                <option>Business and management</option>
-                <option>Chemistry</option>
-                <option>Communications</option>
-                <option>Computer science</option>
-                <option>Criminal justice</option>
-                <option>Education</option>
-                <option>Engineering</option>
-                <option>Environmental science</option>
-                <option>Finance and accounting</option>
-                <option>Health and medicine</option>
-                <option>History</option>
-                <option>Human resources</option>
-                <option>Information technology</option>
-                <option>International relations</option>
-                <option>Journalism</option>
-                <option>Law and legal studies</option>
-                <option>Linguistics</option>
-                <option>Marketing and advertising</option>
-                <option>Mathematics</option>
-                <option>Music</option>
-                <option>Nursing</option>
-                <option>Philosophy</option>
-                <option>Physics</option>
-                <option>Political science</option>
-                <option>Psychology</option>
-                <option>Social work</option>
-                <option>Sociology</option>
-                <option>Sports and physical education</option>
-                <option>Theatre and drama</option>
-                <option>Tourism and hospitality</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </body>
 
 </html>
