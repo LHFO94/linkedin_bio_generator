@@ -12,3 +12,4 @@ def main_get(name=None):
         personal_info = dict(request.form)
         bio = generate_bio(**personal_info)
         return render_template("main.html", bio=bio)
+    
