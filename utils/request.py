@@ -45,30 +45,23 @@ def generate_bio(first_name: str, last_name: str, location: str,
     
     chat = ChatOpenAI(openai_api_key=os.getenv('$OPENAI_API_KEY'),
                       model_name=MODEL, temperature=temperature, 
-                      streaming=True, verbose=True, 
-                      StreamingStdOutCallbackHandler=CallbackManager([StreamingStdOutCallbackHandler()]))
+                      verbose=True)
 
-    for resp in chat([HumanMessage(content="Write me a song about sparkling water.")]):
-        yield resp
+    promt = generate_prompt(system_prompt, human_prompt)
+    chain = LLMChain(llm=chat, prompt=promt)
+    response = chain.run(
+        **{
+            "first_name": first_name,
+            "last_name": last_name,
+            "location": location,
+            "years_of_experience": years_of_experience,
+            "industry": industry,
+            "degree_type": degree_type,
+            "field_of_study": field_of_study,
+        }
+    )
 
+    return response.replace('\n', '<br>')
 
-    
-    # promt = generate_prompt(system_prompt, human_prompt)
-    # chain = LLMChain(llm=chat, prompt=promt)
-    # response = chain.run(
-    #     **{
-    #         "first_name": first_name,
-    #         "last_name": last_name,
-    #         "location": location,
-    #         "years_of_experience": years_of_experience,
-    #         "industry": industry,
-    #         "degree_type": degree_type,
-    #         "field_of_study": field_of_study,
-    #     }
-    # )
-    # print(response)
-
-    # return response
-
-# if __name__ == "__main__":
-#     generate_bio('papi','chulo','Amsterdam','2', 'IT', 'Masters', 'Data Science')
+if __name__ == "__main__":
+    generate_bio('papi','chulo','Amsterdam','2', 'IT', 'Masters', 'Data Science')

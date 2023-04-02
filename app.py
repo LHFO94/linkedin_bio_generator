@@ -1,6 +1,7 @@
 from flask import Flask, request
-from flask import render_template
+from flask import render_template, Response, stream_with_context, stream_template
 from utils.request import generate_bio
+import time 
 
 app = Flask(__name__, template_folder="templates")
 
@@ -10,6 +11,8 @@ def main_get(name=None):
         return render_template("main.html")
     else:
         personal_info = dict(request.form)
-        bio = generate_bio(**personal_info)
-        return render_template("main.html", bio=bio)
-    
+        #bio = generate_bio(**personal_info)
+
+        bio = 'this is my bio <br> Later more <br>'
+        time.sleep(5)
+        return render_template('main.html', bio=bio)
