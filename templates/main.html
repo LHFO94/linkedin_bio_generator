@@ -13,15 +13,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="../static/style.css">
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+
 </head>
 
 <body>
     <div class="container">
-        <div class="row justify-content-md-center">
+        <div class="row justify-content-md-center border-bottom mb-4">
             <h2 class="display-3"> Linkedin Bio Generator</h2>
         </div>
-        <div class="row">
+        <div class="row rounded bg-white shadow p-3">
             <div class="col-sm-6">
                 <form method="post">
                     <div class="form-group">
@@ -128,28 +132,45 @@
                 </form>
             </div>
             <div class="col-sm-6 rounded" style="background-color: #d6d5d5;">
-                <div class="d-flex justify-content-md-center align-items-center"">
-                    <div class=" spinner" id="spinner"></div>
+                <div class="d-flex justify-content-md-center align-items-center">
+                    <div class=" spinner my-5" id="spinner"></div>
+                </div>
+                {% for para in bio %}
+                <p class="lead" id="generated_bio">{{para}}</p>
+                {% endfor %}
+                </p>
             </div>
-            <p class="lead" id="generated_bio"> {{ bio }} </p>
         </div>
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top bg-transparent">
+            <span class="mb-3 mb-md-0 text-muted">Powered by ChatGPT</span>
+        </footer>
     </div>
-    </div>
-    <script>
-        // Select the button and the spinner elements
-        const button = document.getElementById("btn_submit");
-        const spinner = document.getElementById("spinner");
-        const bio = document.getElementById('generated_bio')
-
-        // Add a click event listener to the button
-        button.addEventListener("click", function () {
-            // Show the spinner
-            spinner.style.display = "block";
-            // empty bio
-            bio.innerHTML = ''
-        });
-
-    </script>
+    <canvas class="background"></canvas>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
 </body>
+<script>
+    // Select the button and the spinner elements
+    const button = document.getElementById("btn_submit");
+    const spinner = document.getElementById("spinner");
+    const bio = document.getElementById('generated_bio')
+
+    // Add a click event listener to the button
+    button.addEventListener("click", function () {
+        // Show the spinner
+        spinner.style.display = "block";
+        // empty bio
+        bio.innerHTML = ''
+    });
+
+    window.onload = function () {
+        Particles.init({
+            selector: '.background',
+            maxParticles: 250,
+            connectParticles: true,
+
+        });
+    };
+
+</script>
 
 </html>

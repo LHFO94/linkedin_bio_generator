@@ -61,7 +61,7 @@ def generate_bio(first_name: str, last_name: str, location: str,
         }
     )
 
-    return response.replace('\n', '<br>')
+    return response.replace('\n')
 
 if __name__ == "__main__":
     generate_bio('papi','chulo','Amsterdam','2', 'IT', 'Masters', 'Data Science')

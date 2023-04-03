@@ -19,3 +19,22 @@
         transform: rotate(360deg);
     }
 }
+
+body {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+div.container {
+    position: relative;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
