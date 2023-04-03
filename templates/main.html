@@ -2,18 +2,22 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Linkedin Bio Generator</title>
+    <title>Linkedin BioForge</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
     <link rel="stylesheet" href="../static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,100&family=Montserrat:wght@100&display=swap"
+        rel="stylesheet">
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
@@ -23,7 +27,7 @@
 <body>
     <div class="container">
         <div class="row justify-content-md-center border-bottom mb-4">
-            <h2 class="display-3"> Linkedin Bio Generator</h2>
+            <h2 class="display-3"> Linkedin BioForge </h2>
         </div>
         <div class="row rounded bg-white shadow p-3">
             <div class="col-sm-6">
@@ -131,7 +135,7 @@
                     <button type="submit" class="btn btn-primary" id="btn_submit">Submit</button>
                 </form>
             </div>
-            <div class="col-sm-6 rounded" style="background-color: #d6d5d5;">
+            <div class="col-sm-6 rounded border border-info">
                 <div class="d-flex justify-content-md-center align-items-center">
                     <div class=" spinner my-5" id="spinner"></div>
                 </div>
