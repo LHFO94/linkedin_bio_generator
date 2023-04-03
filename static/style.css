@@ -23,7 +23,7 @@
 body {
     display: flex;
     align-items: center;
-    background-color: #f9f9f9;
+    background-color: #347Bf6;
 }
 
 div.container {
@@ -37,4 +37,8 @@ div.container {
     left: 0;
     right: 0;
     z-index: -1;
+}
+
+.display-3 {
+    color: #ffffff;
 }
