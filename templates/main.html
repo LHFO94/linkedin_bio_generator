@@ -21,133 +21,44 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+    <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
 
 </head>
 
 <body>
     <div class="container">
-        <div class="row justify-content-md-center border-bottom mb-4">
+        <div class="row justify-content-md-center border-bottom mb-3">
             <h2 class="display-3"> Linkedin BioForge </h2>
         </div>
-        <div class="row rounded bg-white shadow p-3">
-            <div class="col-sm-6">
-                <form method="post">
-                    <div class="form-group">
-                        <label for="first_name">First name</label>
-                        <input class="form-control" type="text" placeholder="First name" name="first_name"
-                            id="first_name">
+        <div class="row rounded justify-content-center align-items-center bg-white shadow p-3">
+            <div class="col">
+                <form class="was-validated" method="post">
+                    <label for="basic-url" class="form-label">Enter Linkedin profile URL</label>
+                    <input type="text" class="form-control" id="basic-url" required
+                        pattern="^https:\/\/www\.linkedin\.com\/in\/[a-z0-9-]+\/?"
+                        placeholder="https://www.linkedin.com/in/satyanadella/" value='mark' required>
+                    <div class="valid-feedback b-4">
+                        Looks good!
                     </div>
-                    <div class="form-group">
-                        <label for="second_name">Second name</label>
-                        <input class="form-control" type="text" placeholder="Second name" name="last_name"
-                            id="last_name">
-                    </div>
-                    <div class="form-group">
-                        <label for="location">Location</label>
-                        <input class="form-control" type="text" placeholder="location" name="location" id="location">
-                    </div>
-                    <div class="form-group">
-                        <label for="years_of_experience">Years of experience</label>
-                        <select class="form-control" id="years_of_experience" name="years_of_experience">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="industry">Industry</label>
-                        <select class="form-control" id="industry" , name="industry">
-                            <option>Agriculture </option>
-                            <option>Automotive</option>
-                            <option>Banking and finance</option>
-                            <option>Biotechnology and pharmaceuticals</option>
-                            <option>Chemicals</option>
-                            <option>Construction</option>
-                            <option>Consumer goods</option>
-                            <option>Education</option>
-                            <option>Energy and utilities</option>
-                            <option>Healthcare</option>
-                            <option>Hospitality and tourism </option>
-                            <option>Information technology</option>
-                            <option>Manufacturing</option>
-                            <option>Media and entertainment</option>
-                            <option>Real estate</option>
-                            <option>Retail </option>
-                            <option>Telecommunications</option>
-                            <option>Transportation and logistics</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="degree_type">degree</label>
-                        <select class="form-control" id="degree_type" , name="degree_type">
-                            <option>Associate Degree</option>
-                            <option>Bachelor's Degree</option>
-                            <option>Master's Degree</option>
-                            <option>Doctoral Degree</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="field_of_study">degree</label>
-                        <select class="form-control" id="field_of_study" , name="field_of_study">
-                            <option>Agriculture</option>
-                            <option>Architecture</option>
-                            <option>Art and design</option>
-                            <option>Biology</option>
-                            <option>Business and management</option>
-                            <option>Chemistry</option>
-                            <option>Communications</option>
-                            <option>Computer science</option>
-                            <option>Criminal justice</option>
-                            <option>Education</option>
-                            <option>Engineering</option>
-                            <option>Environmental science</option>
-                            <option>Finance and accounting</option>
-                            <option>Health and medicine</option>
-                            <option>History</option>
-                            <option>Human resources</option>
-                            <option>Information technology</option>
-                            <option>International relations</option>
-                            <option>Journalism</option>
-                            <option>Law and legal studies</option>
-                            <option>Linguistics</option>
-                            <option>Marketing and advertising</option>
-                            <option>Mathematics</option>
-                            <option>Music</option>
-                            <option>Nursing</option>
-                            <option>Philosophy</option>
-                            <option>Physics</option>
-                            <option>Political science</option>
-                            <option>Psychology</option>
-                            <option>Social work</option>
-                            <option>Sociology</option>
-                            <option>Sports and physical education</option>
-                            <option>Theatre and drama</option>
-                            <option>Tourism and hospitality</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="btn_submit">Submit</button>
+                    <button type="submit" class="btn btn-primary mt-4" id="btn_submit">Submit</button>
                 </form>
             </div>
-            <div class="col-sm-6 rounded border border-info">
-                <div class="d-flex justify-content-md-center align-items-center">
-                    <div class=" spinner my-5" id="spinner"></div>
-                </div>
-                {% for para in bio %}
-                <p class="lead" id="generated_bio">{{para}}</p>
-                {% endfor %}
-                </p>
-            </div>
         </div>
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top bg-transparent">
-            <span class="mb-3 mb-md-0 text-white">Powered by ChatGPT</span>
-        </footer>
+        <footer class="row py-3 my-3 border-top bg-transparent">
+            <div class="col-md justify-content-start">
+                <div class="mb-3 mb-md-0 text-white">Powered by ChatGPT</span>
+                </div>
+            </div>
+            <div class="col-xs justify-content-end">
+                <a rel="githubpage" href="https://github.com/LHFO94/linkedin_bio_generator"><ion-icon
+                        name="logo-github"></ion-icon></a>
+                <a rel="linkedin" href="https://www.linkedin.com/in/luuk-hofman-01164259/"><ion-icon
+                        name="logo-linkedin"></ion-icon></a>
+            </div>
+    </div>
+    </footer>
+    </div>
+
     </div>
     <canvas class="background"></canvas>
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
@@ -156,7 +67,7 @@
     // Select the button and the spinner elements
     const button = document.getElementById("btn_submit");
     const spinner = document.getElementById("spinner");
-    const bio = document.getElementById('generated_bio')
+    const url = document.getElementById('basic_url');
 
     // Add a click event listener to the button
     button.addEventListener("click", function () {
