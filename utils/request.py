@@ -10,13 +10,11 @@ from langchain.prompts.chat import (
     HumanMessagePromptTemplate,
 )
 
-from langchain.callbacks.base import CallbackManager
-from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
 MODEL = "gpt-3.5-turbo-0301"
 
 def scrape_profile(profile_url: str) -> dict:
-    """Scrapes a Linkedin profile based on URL """
+    """Scrapes a Linkedin profile based on URL"""
     api = Linkedin('luuk_hofman1994@hotmail.com', os.getenv('Linkedpwd'))
     profile_uri = profile_url.split('/')[4]
     profile = api.get_profile(profile_uri)
@@ -77,7 +75,6 @@ def generate_bio(first_name: str, last_name: str, location: str,
                  years_of_experience: str, industry: str, 
                  degree_type: str, field_of_study: 
                  str, temperature: int=0):
-    
     
     chat = ChatOpenAI(openai_api_key=os.getenv('$OPENAI_API_KEY'),
                       model_name=MODEL, temperature=temperature, 

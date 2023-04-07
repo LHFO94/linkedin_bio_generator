@@ -21,8 +21,8 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
-    <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
-
+    <script type="module" src="https://unpkg.com/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@latest/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
@@ -30,18 +30,26 @@
         <div class="row justify-content-md-center border-bottom mb-3">
             <h2 class="display-3"> Linkedin BioForge </h2>
         </div>
-        <div class="row rounded justify-content-center align-items-center bg-white shadow p-3">
+        <div class="row rounded justify-content-center align-items-center bg-white shadow p-3" id="email_box">
             <div class="col">
                 <form class="was-validated" method="post">
                     <label for="basic-url" class="form-label">Enter Linkedin profile URL</label>
                     <input type="text" class="form-control" id="basic-url" required
                         pattern="^https:\/\/www\.linkedin\.com\/in\/[a-z0-9-]+\/?"
-                        placeholder="https://www.linkedin.com/in/satyanadella/" value='mark' required>
-                    <div class="valid-feedback b-4">
-                        Looks good!
-                    </div>
-                    <button type="submit" class="btn btn-primary mt-4" id="btn_submit">Submit</button>
+                        placeholder="https://www.linkedin.com/in/satyanadella/" required>
+                    <button type="submit" class="btn btn-primary mt-3" id="btn_submit">Submit
+                        <span class="spinner-grow spinner-grow-sm d-none" id='spinner' role="status"
+                            aria-hidden="true"></span>
+                        <span class="sr-only">Loading...</span>
+                    </button>
                 </form>
+            </div>
+        </div>
+        <div class="row rounded justify-content-left align-items-center bg-white shadow p-3 mt-3 d-none"
+            id="output_box">
+            <label for="basic-url" class="form-label">Generated bio </label>
+            <div class="input-group mb-3" style="height: 400px;">
+                <input type="text" class="form-control" id="myText" value="Text to copy">
             </div>
         </div>
         <footer class="row py-3 my-3 border-top bg-transparent">
@@ -55,10 +63,7 @@
                 <a rel="linkedin" href="https://www.linkedin.com/in/luuk-hofman-01164259/"><ion-icon
                         name="logo-linkedin"></ion-icon></a>
             </div>
-    </div>
-    </footer>
-    </div>
-
+        </footer>
     </div>
     <canvas class="background"></canvas>
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
@@ -71,10 +76,10 @@
 
     // Add a click event listener to the button
     button.addEventListener("click", function () {
-        // Show the spinner
-        spinner.style.display = "block";
-        // empty bio
-        bio.innerHTML = ''
+        // button.innerText = 'Loading...'
+        button.innerHTML = '<span class="spinner-grow spinner-grow-sm d-none" role="status" id="spinner" aria-hidden="true"></span>Loading...';
+        button.disabled = true;
+        document.getElementById('spinner').classList.remove('d-none');
     });
 
     window.onload = function () {
@@ -85,6 +90,13 @@
             color: '#FFFFFF',
         });
     };
+
+    function copyText() {
+        var copyText = document.getElementById("myText");
+        copyText.select();
+        document.execCommand("copy");
+    }
+
 
 </script>
 

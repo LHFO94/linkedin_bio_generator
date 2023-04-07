@@ -10,8 +10,8 @@ def main_get():
         return render_template("main.html")
     else:
         personal_info = dict(request.form)
-        bio = generate_bio(**personal_info)
-        # bio = 'this is my bio \n Later more \n'.split('\n')
-        # time.sleep(5)
+        #bio = generate_bio(**personal_info)
+        bio = 'this is my bio \n Later more \n'.split('\n')
+        time.sleep(5)
 
         return render_template('main.html', bio=bio)
