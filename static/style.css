@@ -30,6 +30,15 @@ ion-icon {
     font-size: 24px;
 }
 
-.output_box {
-    z-index: -1;
+#bio_box {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+#copy_button {
+    color: #c5c5c5
+}
+
+#copy_button:active {
+    color: #347Bf6
 }

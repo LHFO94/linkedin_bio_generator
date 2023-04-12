@@ -1,0 +1,23 @@
+{% extends "email.html" %}
+
+{% block bio %}
+
+<div class="d-flex row rounded align-items-center bg-white shadow p-3 mt-3 " id="output_box">
+    <div class="row w-100 border-bottom">
+        <div class=" col justify-content-left">
+            <label for="basic-url" class="form-label">Generated bio for {{first_name}}
+                {{last_name}}</label>
+        </div>
+        <div class="col-xs">
+            <ion-icon name="copy-outline" id="copy_button"></ion-icon>
+        </div>
+    </div>
+    <div class="input-group mb-3 mt-3 border-bottom" id="bio_box">
+        {% for part in bio %}
+        <p> {{part}} </p>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock bio %}
