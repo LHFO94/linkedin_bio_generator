@@ -26,6 +26,14 @@ copyIcon.addEventListener('click', () => {
     copyText = document.getElementById('bio_box');
     text = copyText.innerText;
     navigator.clipboard.writeText(text);
+    if (copyIcon.name == 'checkmark-outline') {
+        copyIcon.name = 'copy-outline';
+        copyIcon.classList.add('active')
+    }
+    else {
+        copyIcon.name = 'checkmark-outline'
+        copyIcon.classList.remove('active')
+    }
 })
 
 
