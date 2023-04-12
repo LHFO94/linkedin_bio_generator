@@ -11,20 +11,20 @@ def main_get():
         return render_template("email.html")
     else:
         start_time = time.time()
-
-        # email = dict(request.form)['e-mail']
-        # info = scrape_profile(email)
-        # bio = generate_bio(info)
-
-        with open('bio.txt', 'r') as f:
-            bio = f.read()
         
-        first_name = 'luuk'
-        second_name = 'hofman'
+        if app.debug:
+            with open('./utils/debug_bio.txt', 'r') as f:
+                bio = f.read()
+                first_name = 'John'
+                second_name = 'Doe'
+                time.sleep(2)
 
+        else:
+            email = dict(request.form)['e-mail']
+            info = scrape_profile(email)
+            bio = generate_bio(info)
+ 
         bio = [part for part in bio.split('<br>') if len(part) > 1]
-        time.sleep(2)
         elapsed_time = time.time() - start_time
-        print(f'Total time elaped: {round(elapsed_time,2)} sec')
+        app.logger.info(f'Bio generated in - {round(elapsed_time,2)} - sec.')
         return render_template('bio.html', bio=bio, first_name=first_name, last_name=second_name)
-    
