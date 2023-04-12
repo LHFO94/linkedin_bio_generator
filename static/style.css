@@ -22,6 +22,11 @@ div.container {
     font-family: 'Montserrat', sans-serif;
 }
 
+#bio_box {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
 ion-icon {
     color: rgb(255, 255, 255);
 }
@@ -30,15 +35,10 @@ ion-icon {
     font-size: 24px;
 }
 
-#bio_box {
-    word-break: break-word;
-    overflow-wrap: break-word;
+ion-icon[name="copy-outline"] {
+    color: #c5c5c5;
 }
 
-#copy_button {
-    color: #c5c5c5
-}
-
-#copy_button:active {
-    color: #53A451
+ion-icon[name="checkmark-outline"] {
+    color: #00c020;
 }
