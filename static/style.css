@@ -17,9 +17,9 @@ div.container {
     z-index: -1;
 }
 
-.display-3 {
+#title_text {
     color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Major Mono Display', monospace;
 }
 
 #bio_box {
