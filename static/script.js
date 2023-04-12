@@ -11,6 +11,21 @@ button.addEventListener("click", function () {
     //button.disabled = true
 });
 
+document.addEventListener('input', function (event) {
+    if (event.target.tagName.toLowerCase() === 'input') {
+        var form = document.querySelector('form');
+        if (form.checkValidity() === false) {
+            button.disabled = true;
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        else {
+            button.disabled = false;
+        }
+        form.classList.add('was-validated');
+    }
+});
+
 window.onload = function () {
     Particles.init({
         selector: '.background',
