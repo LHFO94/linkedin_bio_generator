@@ -42,3 +42,7 @@ ion-icon[name="copy-outline"] {
 ion-icon[name="checkmark-outline"] {
     color: #00c020;
 }
+
+#error_box {
+    color: crimson;
+}

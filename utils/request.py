@@ -1,21 +1,18 @@
 import os
-import json
 from linkedin_api import Linkedin
 from langchain import LLMChain
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts.chat import (
-    HumanMessage,
     ChatPromptTemplate,
     SystemMessagePromptTemplate,
     HumanMessagePromptTemplate,
 )
 
-
 MODEL = "gpt-3.5-turbo-0301"
 
 def scrape_profile(profile_url: str) -> dict:
     """Scrapes a Linkedin profile based on URL"""
-    api = Linkedin('luuk_hofman1994@hotmail.com', os.getenv('Linkedpwd'))
+    api = Linkedin(os.getenv('Linkedin-email'), os.getenv('Linkedin-pwd'))
     profile_uri = profile_url.split('/')[4]
     profile = api.get_profile(profile_uri)
 
@@ -99,4 +96,3 @@ def generate_bio(profile: dict, temperature: int=0.7):
 
     response = response.replace('\n', '<br>')
     return response
-

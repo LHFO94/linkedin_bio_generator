@@ -1,0 +1,4 @@
+Flask==2.2.3
+linkedin-api==2.0.0a5
+langchain==0.0.127
+openai==0.27.2

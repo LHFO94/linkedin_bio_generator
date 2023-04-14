@@ -1,7 +1,7 @@
+import time 
 from flask import Flask, request, render_template
 from utils.request import generate_bio
 from utils.request import scrape_profile
-import time 
 
 app = Flask(__name__, template_folder="templates")
 
@@ -11,7 +11,8 @@ def main_get():
         return render_template("email.html")
     else:
         start_time = time.time()
-        
+    
+    try:
         if app.debug:
             with open('./utils/debug_bio.txt', 'r') as f:
                 bio = f.read()
@@ -28,3 +29,7 @@ def main_get():
         elapsed_time = time.time() - start_time
         app.logger.info(f'Bio generated in - {round(elapsed_time,2)} - sec.')
         return render_template('bio.html', bio=bio, first_name=first_name, last_name=second_name)
+    
+    except Exception as e:
+        return render_template('error.html', exception=e)
+        
