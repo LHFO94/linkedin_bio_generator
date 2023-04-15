@@ -8,6 +8,7 @@ app = Flask(__name__, template_folder="templates")
 @app.route("/", methods=["GET", "POST"])
 def main_get():
     if request.method == "GET":
+        app.logger.info('A user connected to the app!')
         return render_template("email.html")
     else:
         start_time = time.time()
@@ -17,7 +18,7 @@ def main_get():
             with open('./utils/debug_bio.txt', 'r') as f:
                 bio = f.read()
                 first_name = 'John'
-                second_name = 'Doe'
+                #second_name = 'Doe'
                 time.sleep(2)
 
         else:
@@ -27,9 +28,10 @@ def main_get():
  
         bio = [part for part in bio.split('<br>') if len(part) > 1]
         elapsed_time = time.time() - start_time
-        app.logger.info(f'Bio generated in - {round(elapsed_time,2)} - sec.')
+        app.logger.info(f'Bio generated in - {round(elapsed_time,2)} sec.')
         return render_template('bio.html', bio=bio, first_name=first_name, last_name=second_name)
     
     except Exception as e:
+        app.logger.exception(f'There was an error - {e}')
         return render_template('error.html', exception=e)
         
