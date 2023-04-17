@@ -12,7 +12,8 @@ MODEL = "gpt-3.5-turbo-0301"
 
 def scrape_profile(profile_url: str) -> dict:
     """Scrapes a Linkedin profile based on URL"""
-    api = Linkedin(os.getenv('Linkedin-email'), os.getenv('Linkedin-pwd'))
+
+    api = Linkedin(str(os.getenv('Linkedinmail')), str(os.getenv('Linkedinpwd')))
     profile_uri = profile_url.split('/')[4]
     profile = api.get_profile(profile_uri)
 
@@ -79,7 +80,7 @@ human_prompt = """
 
 def generate_bio(profile: dict, temperature: int=0.7):
     
-    chat = ChatOpenAI(openai_api_key=os.getenv('$OPENAI_API_KEY'),
+    chat = ChatOpenAI(openai_api_key=os.getenv('Openaikey'),
                       model_name=MODEL, temperature=temperature, 
                       verbose=True)
 

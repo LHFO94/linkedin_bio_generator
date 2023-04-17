@@ -3,6 +3,6 @@ WORKDIR /app
 COPY ./requirements.txt /app
 RUN pip install -r requirements.txt
 COPY . .
-EXPOSE 5500
+EXPOSE 80
 ENV FLASK_APP=app.py
-CMD ["flask", "run", "--port", "5500"]
+CMD ["flask", "run", "--port", "80", "--host", "0.0.0.0"]
