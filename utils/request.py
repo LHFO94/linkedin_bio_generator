@@ -1,17 +1,51 @@
 import os
+from linkedin_api import Linkedin
 from langchain import LLMChain
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts.chat import (
-    HumanMessage,
     ChatPromptTemplate,
     SystemMessagePromptTemplate,
     HumanMessagePromptTemplate,
 )
-from langchain.callbacks.base import CallbackManager
-from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-
 
 MODEL = "gpt-3.5-turbo-0301"
+
+def scrape_profile(profile_url: str) -> dict:
+    """Scrapes a Linkedin profile based on URL"""
+    api = Linkedin(os.getenv('Linkedin-email'), os.getenv('Linkedin-pwd'))
+    profile_uri = profile_url.split('/')[4]
+    profile = api.get_profile(profile_uri)
+
+    header = {'first_name': profile['firstName'], 
+              'last_name': profile['lastName'],
+              'location': profile['geoLocationName'],
+              'current_job': profile['headline']}
+                
+    experiences, eduction = [], []
+    for experience in profile['experience']:
+        job_details = {}
+        for key in ['companyName', 'title', 'timePeriod', 'description']:
+            try:
+                job_details[key] = experience[key]
+            except KeyError:
+                pass
+        experiences.append(job_details)
+
+    for study in profile['education']:
+        study_details = {}
+        for key in ['fieldOfStufy', 'degreeName', 'schoolName']:
+            try:
+                study_details[key] = study[key]
+            except KeyError:
+                pass
+        eduction.append(study_details)
+
+    profile_out = {}
+    profile_out['header'] = header
+    profile_out['work_experience'] = experiences
+    profile_out['education'] = eduction
+
+    return profile_out        
 
 
 def generate_prompt(prompt_template: str, human_template: str) -> ChatPromptTemplate:
@@ -24,24 +58,26 @@ def generate_prompt(prompt_template: str, human_template: str) -> ChatPromptTemp
     return chat_prompt
 
 
-
 system_prompt = """
                 You are a skilled writer well versed in all languages and specially good at corporate lingo.
-                You will be given information about a particular person and are expected to write a fitting bio for their LinkedIn page
+                You will be given information about a particular person and are expected to write a fitting bio for their LinkedIn page. 
+                Make sure you do not just cite a persons work experience and education but use this information to write a compelling and personalised biography.
                 """
 
 human_prompt = """
-               You are a skilled writer well versed in all languages and specially good at corporate lingo.
-               You will be given information about a particular person and are expected to write a fitting bio for their LinkedIn page
-               The person has the following name: {first_name}, {last_name} and lives in {location}. This person has {years_of_experience} years of experience in the field of {industry}.    
-               This person has a {degree_type} in {field_of_study}         
+               ---------------
+               Header info: 
+               {header}
+               ---------------
+               Work experience: 
+               {work_experience}
+               ---------------
+               Education: 
+               {education}
+               ---------------
                """
 
-def generate_bio(first_name: str, last_name: str, location: str, 
-                 years_of_experience: str, industry: str, 
-                 degree_type: str, field_of_study: 
-                 str, temperature: int=0):
-    
+def generate_bio(profile: dict, temperature: int=0.7):
     
     chat = ChatOpenAI(openai_api_key=os.getenv('$OPENAI_API_KEY'),
                       model_name=MODEL, temperature=temperature, 
@@ -49,19 +85,14 @@ def generate_bio(first_name: str, last_name: str, location: str,
 
     promt = generate_prompt(system_prompt, human_prompt)
     chain = LLMChain(llm=chat, prompt=promt)
+
     response = chain.run(
         **{
-            "first_name": first_name,
-            "last_name": last_name,
-            "location": location,
-            "years_of_experience": years_of_experience,
-            "industry": industry,
-            "degree_type": degree_type,
-            "field_of_study": field_of_study,
+            "header": str(profile['header']),
+            "work_experience": str(profile['work_experience']),
+            "education": str(profile['education'])
         }
     )
 
-    return response.replace('\n', '<br>')
-
-if __name__ == "__main__":
-    generate_bio('papi','chulo','Amsterdam','2', 'IT', 'Masters', 'Data Science')
+    response = response.replace('\n', '<br>')
+    return response

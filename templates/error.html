@@ -1,0 +1,13 @@
+{% extends "email.html" %}
+
+{% block bio %}
+
+<div class="d-flex row rounded align-items-center bg-white shadow p-3 mt-3 " id="output_box">
+    <div class="row w-100">
+        <div class="col justify-content-left" id="error_box">There was an error processing your profile: {{ exception
+            }}
+        </div>
+    </div>
+</div>
+
+{% endblock bio %}

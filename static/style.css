@@ -1,21 +1,48 @@
-.spinner {
-    border: 5px solid #f3f3f3;
-    /* Light grey */
-    border-top: 5px solid #3498db;
-    /* Blue */
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
-    display: None;
+body {
+    display: flex;
+    align-items: center;
+    background-color: #347Bf6;
 }
 
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
+div.container {
+    position: relative;
+}
 
-    100% {
-        transform: rotate(360deg);
-    }
+.background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+#title_text {
+    color: #ffffff;
+    font-family: 'Major Mono Display', monospace;
+}
+
+#bio_box {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+ion-icon {
+    color: rgb(255, 255, 255);
+}
+
+ion-icon {
+    font-size: 24px;
+}
+
+ion-icon[name="copy-outline"] {
+    color: #c5c5c5;
+}
+
+ion-icon[name="checkmark-outline"] {
+    color: #00c020;
+}
+
+#error_box {
+    color: crimson;
 }

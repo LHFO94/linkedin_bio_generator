@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block email %}
+
+<div class="row rounded justify-content-center align-items-center bg-white shadow p-3" id="email_box">
+    <div class="col">
+        <form method="post" action="/">
+            <label for="basic-url" class="form-label">Enter Linkedin profile URL</label>
+            <input type="text" class="form-control" id="basic-url" name="e-mail"
+                pattern="^https:\/\/www\.linkedin\.com\/in\/[a-z0-9-]+\/?"
+                placeholder="https://www.linkedin.com/in/satyanadella/" required>
+            <div class="invalid-feedback">
+                Please enter a valid linkedin profile url
+            </div>
+            <button type="submit" class="btn btn-primary mt-3" id="btn_submit" disabled>Submit
+                <span class="spinner-grow spinner-grow-sm d-none" id='spinner' role="status" aria-hidden="true"></span>
+                <span class="sr-only">Loading...</span>
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock email %}
