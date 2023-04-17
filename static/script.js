@@ -2,6 +2,8 @@
 const button = document.getElementById("btn_submit");
 const spinner = document.getElementById("spinner");
 const copyIcon = document.getElementById('copy_button')
+const isMobile = navigator.userAgentData.mobile;
+
 
 // adds a spinner to the loading button when clicked
 button.addEventListener("click", function () {
@@ -25,14 +27,27 @@ document.addEventListener('input', function (event) {
     }
 });
 
+
 // initializes the particles.js background
 window.onload = function () {
-    Particles.init({
-        selector: '.background',
-        maxParticles: 250,
-        connectParticles: true,
-        color: '#FFFFFF',
-    });
+
+    if (isMobile) {
+        Particles.init({
+            selector: '.background',
+            maxParticles: 50,
+            connectParticles: true,
+            color: '#FFFFFF',
+        });
+    }
+
+    else {
+        Particles.init({
+            selector: '.background',
+            maxParticles: 250,
+            connectParticles: true,
+            color: '#FFFFFF',
+        });
+    }
 }
 
 // adds copy text functionality to copy button
